@@ -1,5 +1,5 @@
 import React from "react";
-
+import Tabeltailwind from '../pages/tabeltailwind'
 const App = () => {
   return (
     <div className='flex h-screen justify-center items-center'>
