@@ -1,16 +1,15 @@
 import React from "react"
-import { Tabel } from '@tailwind'
 
 function Tabel() {
     const Data2 = [
-        { id: 1, nama_lengkap: "putri elisabel azizah", nama_belakang: "azizah", username: "putri" }
-    { id: 2, nama_lengkap: "riris rahmawati", nama_belakang: "mawati", usernamre: "riris" }
+        { id: 1, nama_lengkap: "putri elisabel azizah", nama_belakang: "azizah", username: "putri" },
+    { id: 2, nama_lengkap: "riris rahmawati", nama_belakang: "mawati", usernamre: "riris" },
     { id: 3, nama_lengkap: "" }
     ]
 
     return (
         <>
-            <Table>
+            <table>
                 <thead>
                     <tr>
                         <th class="border border-gray-300...">#</th>
@@ -29,8 +28,8 @@ function Tabel() {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
-            <Table>
+            </table>
+            <table>
                 <thead>
                     <tr>
                         <th class="border border-gray-300...">#</th>
@@ -49,8 +48,8 @@ function Tabel() {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
-            <Table>
+            </table>
+            <table>
                 <thead>
                     <tr>
                         <th class="border border-gray-300...">#</th>
@@ -69,8 +68,8 @@ function Tabel() {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
-            <Table>
+            </table>
+            <table>
                 <thead>
                     <tr>
                         <th class="border border-gray-300...">#</th>
@@ -89,8 +88,8 @@ function Tabel() {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
-            <Table>
+            </table>
+            <table>
                 <thead>
                     <tr>
                         <th class="border border-gray-300...">#</th>
@@ -109,7 +108,7 @@ function Tabel() {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
+            </table>
         </>
     )
 }

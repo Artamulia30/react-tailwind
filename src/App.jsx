@@ -1,24 +1,13 @@
 import React from "react";
-import Tabeltailwind from '../pages/tabeltailwind'
+import LoginPage from "./pages/login";
+import Register from "./pages/register";
+import { Route, Routes } from "react-router-dom";
 const App = () => {
   return (
-    <div className='flex h-screen justify-center items-center'>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-  <img className="w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPMIR18dYx1eiBZUJS-ajV4AH5HqmCxrJEw&s" alt="monkey in the mountains" />
-  <div className="px-6 py-4">
-    <div className="font-bold text-xl mb-2">This is a monkey</div>
-    <p className="text-gray-700 text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-    </p>
-  </div>
-  <div className="px-6 pt-4 pb-2">
-    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-  </div>
-</div>
-
-    </div>
+    <Routes>
+      <Route path="/" element={<Register/>}/>
+      <Route path="/login" element={<LoginPage />}/>
+    </Routes>
   )
 }
 export default App
