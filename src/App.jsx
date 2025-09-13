@@ -1,14 +1,19 @@
-import React from "react";
-import LoginPage from "./pages/login";
-import Register from "./pages/register";
-import { Route, Routes } from "react-router-dom";
-const App = () => {
+import { useState } from 'react'
+import ReactLogo from './assets/react.svg'
+import ViteLogo from '/vite.svg'
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Register from './pages/Register'
+import Landingpage from './pages/landingpage'
+
+function App() {
+  const [Count, SetCount] = useState(0)
+
   return (
     <Routes>
-      <Route path="/" element={<Register/>}/>
-      <Route path="/login" element={<LoginPage />}/>
+      <Route path="/" element={<Landingpage/>}/>
     </Routes>
   )
 }
+
 export default App
-  
