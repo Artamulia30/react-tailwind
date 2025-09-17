@@ -50,7 +50,7 @@ function Register() {
                     <button className="bg-blue-500 hover:bg-blue-70 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                     >
-                    Masuk
+                    <h1 className="drop-shadow-lg">"Masuk Daftar sekarang"</h1>
                     </button>
                     <Link to="/Register" className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
                     Belum punya akun? Daftar
