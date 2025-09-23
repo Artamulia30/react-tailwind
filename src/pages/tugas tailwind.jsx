@@ -3,9 +3,9 @@ import React from "react"
 function Tabel() {
     const Data2 = [
         { id: 1, nama_lengkap: "putri elisabel azizah", nama_belakang: "azizah", username: "putri" },
-    { id: 2, nama_lengkap: "riris rahmawati", nama_belakang: "mawati", usernamre: "riris" },
-    { id: 3, nama_lengkap: "" }
-    ]
+    { id: 2, nama_lengkap: "riris rahmawati", nama_belakang: "mawati", username: "riris" },
+    { id: 3, nama_lengkap: "cintiya eka putri", nama_belakang:"putri",username:"cintiya" },
+]
 
     return (
         <>

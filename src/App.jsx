@@ -1,20 +1,21 @@
-import { useState } from 'react'
-import ReactLogo from './assets/react.svg'
-import ViteLogo from '/vite.svg'
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import Login from './pages/login'
-import Landingpage from './pages/LandingPage'
+import { Routes, Route } from "react-router-dom"
+import Tabeltailwind from "../pages/tabeltailwind"
+import Register from "../pages/Register"
+import LandingPage from "../pages/LandingPage"
+import Loading from "../pages/Loading"
+import Tabeldata from "../pages/Tabeldata"
+import TambahData from "../pages/Tambahdata"
 
-function App() {
-  const [Count, SetCount] = useState(0)
 
+const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Landingpage/>}/>
-      <Route path="/p" element={<Login/>}/>
+  
+    <Route path="/" element={<Tabeldata/>} />
+    <Route path="/" element={<Tambahandata/>} />
+
     </Routes>
+
   )
 }
-
 export default App
