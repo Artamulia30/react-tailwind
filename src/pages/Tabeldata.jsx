@@ -1,95 +1,88 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function TambahData() {
-    const [formData, setFormData] = useState({
-        makanan: '',
-        Paket: '',
-        Harga: '',
-    });
+function Tabeldata() {
+const [data, setData] = useState([]);
+const [loading, setLoading] = useState(true);
+const Navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+useEffect(() => {
+    const fetchData = async () => {
+    try {
+        const res = await axios.get("http://localhost:5000/menu");
+        setData(res.data);
+    } catch (err) {
+        console.error("Gagal mengambil data:", err);
+    } finally {
+        setLoading(false);
+    }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Tambah data:', formData);
-        alert('Penambahan data berhasil!');
-    };
+    fetchData();
+}, []);
 
-    const handleKembali = () => {
-        window.history.back();
-    };
+const HandleDelete = async (id) => {
+    const konfirmasi = window.confirm("Yakin ingin menghapus data ini?");
+    if (!konfirmasi) return;
 
-    return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 ">
-            <form
-                onSubmit={handleSubmit}
-                className="bg-white p-6 rounded-md shadow-md w-96"
-            >
-                <div className="">
-                    <h2 className="text-center font-bold mb-4 text-lg">Tambah Teks</h2>
-
-                    <label className="block mb-2 font-semibold" htmlFor="makanan">
-                        Makanan
-                    </label>
-                    <input
-                        id="makanan"
-                        name="makanan"
-                        type="text"
-                        placeholder="masukan teks"
-                        value={formData.makanan}
-                        onChange={handleChange}
-                        className="border border-gray-300 rounded px-3 py-2 mb-4 w-full"
-                        required
-                    />
-
-                    <label className="block mb-2 font-semibold" htmlFor="paket">
-                        Paket
-                    </label>
-                    <input
-                        id="paket"
-                        name="Paket"
-                        type="text"
-                        placeholder="masukan teks"
-                        value={formData.Paket}
-                        onChange={handleChange}
-                        className="border border-gray-300 rounded px-3 py-2 mb-4 w-full"
-                        required
-                    />
-                    <label htmlFor="Harga" className="block text-gray-700 text-sm font-bold mb-2">
-                        Harga
-                    </label>
-                    <input
-                        id="Harga"
-                        type="text"
-                        name="Harga"
-                        value={formData.Harga}
-                        onChange={handleChange}
-                        placeholder="Masukkan harga"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        required
-                    /> 
-
-                    <div className="flex justify-between">
-                        <button
-                            type="submit"
-                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                        >
-                            Simpan Data
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleKembali}
-                            className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
-                        >
-                            Kembali
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    );
+    try {
+    await axios.delete(`http://localhost:5000/menu/${id}`)
+    alert("Data berhasil dihapus");
+    setData((prev) => prev.filter((item) => item.id !== id));
+    } catch (err) {
+    console.error("Gagal menghapus data:", err);
+    alert("Gagal menghapus data");
+    }
 };
 
-export default TambahData;
+if (loading) return <p>Loading...</p>;
+
+return (
+
+    <div className="mt-10 m-10 p-5">
+    <div className="flex justify-end p-8 mr-14">
+
+        <button
+        type="submit" className=" px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
+
+        tambah
+        </button>
+    </div>
+<table className="table-auto w-full border border-gray-300 ">
+        <thead className="bg-gray-200">
+        <tr>
+            <th className="px-1 py-2 border">No</th>
+            <th className="px-2 py-2 border">Makanan</th>
+            <th className="px-2 py-2 border">Paket</th>
+            <th className="px-2 py-2 border">Harga</th>
+            <th className="px-4 py-2 border">Aksi</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              `
+        </tr>
+        </thead>
+        <tbody>
+{data.length > 0 ? (
+    data.map((item, index) => (
+    <tr key={item.id} className="hover:bg-gray-100">
+        <td className="px-4 py-2 border text-center">{index + 1}</td>
+        <td className="px-4 py-2 border">{item.makanan}</td>
+        <td className="px-4 py-2 border">{item.paket}</td>
+        <td className="px-4 py-2 border">{item.harga}</td>
+        <td className="px4 py-2 border">{item.Aksi}</td>
+    </tr>
+    ))
+) : (
+    <tr>
+    <td colSpan="4" className="text-center py-4 border">
+        
+        
+    </td>
+    </tr>
+)}
+</tbody>
+
+    </table>
+    </div>
+
+); 
+};
+export default Tabeldata;

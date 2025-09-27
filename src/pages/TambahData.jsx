@@ -1,8 +1,10 @@
-import { useState } from "react";
+import {useState} from "react";
+import { Link,Navigate, UseNavigate } from "react-router-dom";
+import Axios from "axios";
 
 function TambahData() {
     const [formData, setFormData] = useState({
-        makanan: '',
+        Makanan: '',
         Paket: '',
         Harga: '',
     });
@@ -16,7 +18,6 @@ function TambahData() {
         console.log('Tambah data:', formData);
         alert('Penambahan data berhasil!');
     };
-
     const handleKembali = () => {
         window.history.back();
     };
@@ -28,7 +29,7 @@ function TambahData() {
                 className="bg-white p-6 rounded-md shadow-md w-96"
             >
                 <div className="">
-                    <h2 className="text-center font-bold mb-4 text-lg">Tambah Teks</h2>
+                    <h2 className="text-center font-bold mb-4 text-lg">TambahData</h2>
 
                     <label className="block mb-2 font-semibold" htmlFor="makanan">
                         Makanan

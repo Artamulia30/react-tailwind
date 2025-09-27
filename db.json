@@ -1,3 +1,17 @@
 {
-    "users":[]
+"users": [],
+"menu": [
+    {
+    "id": "4fe7",
+    "makanan": "gacoan ",
+    "Paket": "paket 3",
+    "Harga": "15.000"
+    },
+    {
+    "id": "1b8b",
+    "makanan": "Mie ayam ",
+    "Paket": "paket 2",
+    "Harga": "10.000"
+    }
+]
 }
