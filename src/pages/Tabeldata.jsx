@@ -5,7 +5,7 @@ import axios from "axios";
 function Tabeldata() {
 const [data, setData] = useState([]);
 const [loading, setLoading] = useState(true);
-const Navigate = useNavigate();
+const navigate = useNavigate();
 
 useEffect(() => {
     const fetchData = async () => {
@@ -22,12 +22,12 @@ useEffect(() => {
     fetchData();
 }, []);
 
-const HandleDelete = async (id) => {
+const handleDelete = async (id) => {
     const konfirmasi = window.confirm("Yakin ingin menghapus data ini?");
     if (!konfirmasi) return;
 
     try {
-    await axios.delete(`http://localhost:5000/menu/${id}`)
+    await axios.delete(`http://localhost:5000/menu/${id}`);
     alert("Data berhasil dihapus");
     setData((prev) => prev.filter((item) => item.id !== id));
     } catch (err) {
@@ -39,50 +39,57 @@ const HandleDelete = async (id) => {
 if (loading) return <p>Loading...</p>;
 
 return (
-
     <div className="mt-10 m-10 p-5">
     <div className="flex justify-end p-8 mr-14">
-
         <button
-        type="submit" className=" px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
-
-        tambah
+        type="button"
+        onClick={() => navigate("/l")}
+        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
+        >
+        Tambah
         </button>
     </div>
-<table className="table-auto w-full border border-gray-300 ">
+
+    <table className="table-auto w-full border border-gray-300">
         <thead className="bg-gray-200">
         <tr>
             <th className="px-1 py-2 border">No</th>
             <th className="px-2 py-2 border">Makanan</th>
             <th className="px-2 py-2 border">Paket</th>
             <th className="px-2 py-2 border">Harga</th>
-            <th className="px-4 py-2 border">Aksi</th>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              `
+            <th className="px-2 py-2 border">Aksi</th>
         </tr>
         </thead>
         <tbody>
-{data.length > 0 ? (
-    data.map((item, index) => (
-    <tr key={item.id} className="hover:bg-gray-100">
-        <td className="px-4 py-2 border text-center">{index + 1}</td>
-        <td className="px-4 py-2 border">{item.makanan}</td>
-        <td className="px-4 py-2 border">{item.paket}</td>
-        <td className="px-4 py-2 border">{item.harga}</td>
-        <td className="px4 py-2 border">{item.Aksi}</td>
-    </tr>
-    ))
-) : (
-    <tr>
-    <td colSpan="4" className="text-center py-4 border">
-        
-        
-    </td>
-    </tr>
-)}
-</tbody>
-
+        {data.length > 0 ? (
+            data.map((item, index) => (
+            <tr key={item.id} className="hover:bg-gray-100">
+                <td className="px-4 py-2 border text-center">{index + 1}</td>
+                <td className="px-4 py-2 border">{item.makanan}</td>
+                <td className="px-4 py-2 border">{item.paket}</td>
+                <td className="px-4 py-2 border">{item.harga}</td>
+                <td className="px-4 py-2 border">{item.aksi}</td>
+                <td className="px-4 py-2 border text-center">
+                <button
+                    onClick={() => handleDelete(item.id)}
+                    className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
+                >
+                    Hapus
+                </button>
+                </td>
+            </tr>
+            ))
+        ) : (
+            <tr>
+            <td colSpan="5" className="text-center py-4 border">
+                Tidak ada 
+            </td>
+            </tr>
+        )}
+        </tbody>
     </table>
     </div>
+);
+}
 
-); 
-};
 export default Tabeldata;

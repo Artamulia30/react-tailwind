@@ -3,7 +3,7 @@ import TambahData from './pages/Tambahdata'
 import TabelData from './pages/Tabeldata'
 import Sidnav from './component/Sidnav'
 import EditData from './pages/Editdata'
-import Dashboard from './component/dashboard'
+import Dashboard from './component/Dashboard'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
       <Route path="/k" element={<TabelData/>}/>
       <Route path="/r" element={<EditData/>}/>
       <Route path="/d" element={<Dashboard/>}/>
-      <Route path="/A" element={<Sidnav/>}/>
     </Routes>
   </div>
     </div>

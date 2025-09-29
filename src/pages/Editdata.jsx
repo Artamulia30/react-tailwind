@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Editdata() {
-    const { id } = useParams(); // Ambil id dari URL
+    const { id } = useParams(); 
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -11,10 +11,8 @@ function Editdata() {
         paket: "",
         harga: "",
     });
-
     const [loading, setLoading] = useState(true);
 
-    // Ambil data berdasarkan ID
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,7 +26,6 @@ function Editdata() {
                 setLoading(false);
             }
         };
-
         fetchData();
     }, [id]);
 
@@ -41,7 +38,7 @@ function Editdata() {
         try {
             await axios.put(`http://localhost:5000/menu/${id}`, formData);
             alert("Data berhasil diubah!");
-            navigate("/Labeldata"); // Ganti sesuai rute yang benar
+            navigate("/Labeldata");
         } catch (err) {
             console.error("Gagal mengupdate data:", err);
             alert("Gagal mengupdate data!");
@@ -52,7 +49,7 @@ function Editdata() {
 
     return (
         <div className="container mx-auto p-4 max-w-lg">
-            <h1 className="text-3xl font-bold mb-6 text-center">Edit Data</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center">Edit data</h1>
             <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="makanan">
@@ -68,7 +65,6 @@ function Editdata() {
                         required
                     />
                 </div>
-
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="paket">
                         Paket
@@ -83,7 +79,6 @@ function Editdata() {
                         required
                     />
                 </div>
-
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="harga">
                         Harga
@@ -91,24 +86,23 @@ function Editdata() {
                     <input
                         id="harga"
                         name="harga"
-                        type="text"
+                        type="number"
                         value={formData.harga || ""}
                         onChange={handleChange}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
                         required
                     />
                 </div>
-
                 <div className="flex items-center justify-between">
                     <button
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     >
-                        Simpan Perubahan
+                        Simpan
                     </button>
                     <button
                         type="button"
-onClick={() => navigate(-1)}
+                        onClick={() => navigate(-1)}
                         className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
                     >
                         Kembali
@@ -117,6 +111,6 @@ onClick={() => navigate(-1)}
             </form>
         </div>
     );
-};
+}
 
 export default Editdata;

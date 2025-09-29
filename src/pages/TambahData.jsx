@@ -1,12 +1,12 @@
 import {useState} from "react";
-import { Link,Navigate, UseNavigate } from "react-router-dom";
-import Axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function TambahData() {
     const [formData, setFormData] = useState({
-        Makanan: '',
-        Paket: '',
-        Harga: '',
+        makanan: '',
+        paket: '',
+        harga: '',
     });
 
     const handleChange = (e) => {
@@ -29,7 +29,7 @@ function TambahData() {
                 className="bg-white p-6 rounded-md shadow-md w-96"
             >
                 <div className="">
-                    <h2 className="text-center font-bold mb-4 text-lg">TambahData</h2>
+                    <h2 className="text-center font-bold mb-4 text-lg">Edit data</h2>
 
                     <label className="block mb-2 font-semibold" htmlFor="makanan">
                         Makanan
@@ -50,22 +50,22 @@ function TambahData() {
                     </label>
                     <input
                         id="paket"
-                        name="Paket"
+                        name="paket"
                         type="text"
                         placeholder="masukan teks"
-                        value={formData.Paket}
+                        value={formData.paket}
                         onChange={handleChange}
                         className="border border-gray-300 rounded px-3 py-2 mb-4 w-full"
                         required
                     />
-                    <label htmlFor="Harga" className="block text-gray-700 text-sm font-bold mb-2">
+                    <label htmlFor="harga" className="block text-gray-700 text-sm font-bold mb-2">
                         Harga
                     </label>
                     <input
-                        id="Harga"
+                        id="harga"
                         type="text"
-                        name="Harga"
-                        value={formData.Harga}
+                        name="harga"
+                        value={formData.harga}
                         onChange={handleChange}
                         placeholder="Masukkan harga"
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
