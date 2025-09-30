@@ -16,8 +16,8 @@ return (
             <a href="/d" className="block py-2 px-3 rounded hover:bg-blue-600">Dashboard</a>
             <a href="/k" className="block py-2 px-3 rounded  hover:bg-blue-600">Data Siswa</a>
             <a href="/" className="block py-2 px-3 rounded hover:bg-blue-600">Data menu kantin</a>
-            <a href="/" className="block py-2 px-3 rounded hover:bg-blue-600">Profil</a>
-            <a href="" className="block py-2 px-3 rounded hover:bg-blue-600"></a>
+            <a href="/Z" className="block py-2 px-3 rounded hover:bg-blue-600">Profil</a>
+            <a href="/" className="block py-2 px-3 rounded hover:bg-blue-600"></a>
             </nav>
         </div>
     </div>
